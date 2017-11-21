@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
@@ -34,6 +35,8 @@ public abstract class PlacementPhase {
     private GridPane table;
     @FXML
     private Button valider;
+    @FXML
+    private Label instructionLabel;
         
     protected static final int GRID_X = 100;
     protected static final int GRID_Y = 100;
@@ -86,6 +89,8 @@ public abstract class PlacementPhase {
         anchorPane.addEventHandler(KeyEvent.KEY_PRESSED, playKeyEvent());
         
         rotationIsValide = false;
+        
+        instructionLabel.setText("- Selectionez un bateau");
     }
     
     
@@ -104,6 +109,7 @@ public abstract class PlacementPhase {
                         BoatDrawing myboat  = boatMap.get(myRectangle);
                         activeBoat = myboat.setActiveBoat(boatMap);
                         activeBoat.setPlaced(false);
+                        instructionLabel.setText("- Glissez le mouse sur la grille\n- Faites le bateau tourner avec R\n- Cliquez sur la grille pour placer le bateau");
                     }
                     
                 }
@@ -211,7 +217,7 @@ public abstract class PlacementPhase {
                 if (keyEvent.getCode() == KeyCode.R) {
                     if(rotationIsValide){
                         if(activeBoat!=null){
-                            drawRotation(activeBoat);                            
+                            drawRotation(activeBoat);
                         }
                     }   
                 }
@@ -219,6 +225,7 @@ public abstract class PlacementPhase {
                 if (keyEvent.getCode() == KeyCode.DELETE) {
                    if(activeBoat!=null) {
                        reinitBoat(activeBoat);
+                       instructionLabel.setText("- Selectionez un bateau\n- Supprimez un avec DEL");
                    }
                 }
                 keyEvent.consume();
@@ -292,6 +299,7 @@ public abstract class PlacementPhase {
                     if(activeBoat!=null){
                         if(positionCorrect(activeBoat)) {
                             activeBoat.setPlaced(true);
+                            instructionLabel.setText("- Selectionez un bateau\n- Ou supprimez un avec DEL");
                             desactiveBoat(); 
                         }
                     }

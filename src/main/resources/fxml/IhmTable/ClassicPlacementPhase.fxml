@@ -216,6 +216,11 @@
             <Rectangle fx:id="porteAvionsRectangle" arcHeight="5.0" arcWidth="5.0" fill="#ababab" height="29.0" layoutX="560.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="169.0" />
             <Button  fx:id="valider" layoutX="450.0" layoutY="505.0" mnemonicParsing="false" text="Valider" />
             <Button layoutX="14.0" layoutY="505.0" mnemonicParsing="false" text="Quitter" />
+            <Label fx:id="instructionLabel" layoutX="150.0" layoutY="5.0" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Button layoutX="550.0" layoutY="571.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" text="Envoyer" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
